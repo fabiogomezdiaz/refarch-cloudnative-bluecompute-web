@@ -70,7 +70,7 @@ jobs:
       - CHART_NAME=web
       before_script:
       # Install minikube and helm
-      - wget https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/spring/scripts/install_minikube_and_helm.sh && chmod +x install_minikube_and_helm.sh && bash install_minikube_and_helm.sh && rm install_minikube_and_helm.sh
+      - wget https://raw.githubusercontent.com/fabiogomezdiaz/refarch-cloudnative-kubernetes/master/scripts/install_minikube_and_helm.sh && chmod +x install_minikube_and_helm.sh && bash install_minikube_and_helm.sh && rm install_minikube_and_helm.sh
       script:
       # Build Docker image
       - docker build -t "${IMAGE_NAME}:${TAG}" .

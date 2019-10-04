@@ -1,8 +1,8 @@
-# refarch-cloudnative-bluecompute-web: Angular.JS Single Page Application with Node.JS backend
-[![Build Status](https://travis-ci.org/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web.svg?branch=spring)](https://travis-ci.org/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web)
+# refarch-cloudnative-micro-web: Angular.JS Single Page Application with Node.JS backend
+[![Build Status](https://travis-ci.org/fabiogomezdiaz/refarch-cloudnative-micro-web.svg?branch=master)](https://travis-ci.org/fabiogomezdiaz/refarch-cloudnative-micro-web)
 
 *This project is part of the 'IBM Cloud Native Reference Architecture' suite, available at
-https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring*
+https://github.com/fabiogomezdiaz/refarch-cloudnative-kubernetes/tree/master*
 
 ## Table of Contents
   * [Introduction](#introduction)
@@ -36,15 +36,15 @@ Here is an overview of the project's features:
 - Distributed as Docker container and deployed to Kubernetes cluster.
 
 ## Pre-requisites:
-* Create a Kubernetes Cluster by following the steps [here](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes#create-a-kubernetes-cluster).
+* Create a Kubernetes Cluster by following the steps [here](https://github.com/fabiogomezdiaz/refarch-cloudnative-kubernetes#create-a-kubernetes-cluster).
 * Install the following CLI's on your laptop/workstation:
     + [`docker`](https://docs.docker.com/install/)
     + [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
     + [`helm`](https://docs.helm.sh/using_helm/#installing-helm)
 * Clone web repository:
 ```bash
-$ git clone -b spring --single-branch https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web.git
-$ cd refarch-cloudnative-bluecompute-web
+$ git clone https://github.com/fabiogomezdiaz/refarch-cloudnative-micro-web.git
+$ cd refarch-cloudnative-micro-web
 ```
 
 ## Deploy Web Application to Kubernetes Cluster
@@ -65,17 +65,17 @@ To install the microservice charts, run the commands below:
 # Set HS256_KEY secret, which will be used by the charts
 HS256_KEY=E6526VJkKYhyTFRFMC0pTECpHcZ7TGcq8pKsVVgz9KtESVpheEO284qKzfzg8HpWNBPeHOxNGlyudUHi6i8tFQJXC8PiI48RUpMh23vPDLGD35pCM0417gf58z5xlmRNii56fwRCmIhhV7hDsm3KO2jRv4EBVz7HrYbzFeqI45CaStkMYNipzSm2duuer7zRdMjEKIdqsby0JfpQpykHmC5L6hxkX0BT7XWqztTr6xHCwqst26O0g8r7bXSYjp4a
 
-# Add ibmcase-charts helm repo
-helm repo add ibmcase-charts https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/spring/docs/charts;
+# Add ibmcase helm repo
+helm repo add ibmcase https://raw.githubusercontent.com/fabiogomezdiaz/refarch-cloudnative-kubernetes/master/docs/charts;
 
 # Install catalog chart, which also installs inventory dependency chart
-helm upgrade --install catalog --version 0.5.0 --set service.type=NodePort ibmcase-charts/catalog;
+helm upgrade --install catalog --version 0.5.0 --set service.type=NodePort ibmcase/catalog;
 
 # Install auth chart, which also installs customer dependency chart
-helm upgrade --install auth --version 0.5.0 --set service.type=NodePort,customer.service.type=NodePort --set hs256hey.secret=$HS256_KEY,customer.hs256hey.secret=$HS256_KEY ibmcase-charts/auth;
+helm upgrade --install auth --version 0.5.0 --set service.type=NodePort,customer.service.type=NodePort --set hs256hey.secret=$HS256_KEY,customer.hs256hey.secret=$HS256_KEY ibmcase/auth;
 
 # Install orders chart
-helm upgrade --install orders --version 0.5.0 --set service.type=NodePort --set hs256hey.secret=$HS256_KEY ibmcase-charts/orders;
+helm upgrade --install orders --version 0.5.0 --set service.type=NodePort --set hs256hey.secret=$HS256_KEY ibmcase/orders;
 ```
 
 To check if the charts were successfully deployed, you can run the following command:
@@ -303,16 +303,16 @@ That's it, you have successfully deployed and tested the Web microservice locall
 If you would like to setup an automated Jenkins CI/CD Pipeline for this repository, we provided a sample [Jenkinsfile](Jenkinsfile), which uses the [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/) syntax of the [Jenkins Kubernetes Plugin](https://github.com/jenkinsci/kubernetes-plugin) to automatically create and run Jenkis Pipelines from your Kubernetes environment. 
 
 To learn how to use this sample pipeline, follow the guide below and enter the corresponding values for your environment and for this repository:
-* https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes
+* https://github.com/fabiogomezdiaz/refarch-cloudnative-devops-kubernetes
 
 ## Conclusion
 You have successfully deployed and tested the Web Microservice and a MySQL database both on a Kubernetes Cluster and in local Docker Containers.
 
-To see the Web app working in a more complex microservices use case, checkout our Microservice Reference Architecture Application [here](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring).
+To see the Web app working in a more complex microservices use case, checkout our Microservice Reference Architecture Application [here](https://github.com/fabiogomezdiaz/refarch-cloudnative-kubernetes/tree/master).
 
 ## Contributing
 If you would like to contribute to this repository, please fork it, submit a PR, and assign as reviewers any of the GitHub users listed here:
-* https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web/graphs/contributors
+* https://github.com/fabiogomezdiaz/refarch-cloudnative-micro-web/graphs/contributors
 
 ### GOTCHAs
 1. We use [Travis CI](https://travis-ci.org/) for our CI/CD needs, so when you open a Pull Request you will trigger a build in Travis CI, which needs to pass before we consider merging the PR. We use Travis CI to test the following:
@@ -328,5 +328,5 @@ If you would like to contribute to this repository, please fork it, submit a PR,
     * Perhaps this can be improved upon in the future.
 
 ### Contributing a New Chart Package to Microservices Reference Architecture Helm Repository
-To contribute a new chart version to the [Microservices Reference Architecture](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring) helm repository, follow its guide here:
-* https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring#contributing-a-new-chart-to-the-helm-repositories
+To contribute a new chart version to the [Microservices Reference Architecture](https://github.com/fabiogomezdiaz/refarch-cloudnative-kubernetes/tree/master) helm repository, follow its guide here:
+* https://github.com/fabiogomezdiaz/refarch-cloudnative-kubernetes/tree/master#contributing-a-new-chart-to-the-helm-repositories

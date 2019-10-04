@@ -1,7 +1,7 @@
 /*
     To learn how to use this sample pipeline, follow the guide below and enter the
     corresponding values for your environment and for this repository:
-    - https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes
+    - https://github.com/fabiogomezdiaz/refarch-cloudnative-devops-kubernetes
 */
 
 // Environment
@@ -19,7 +19,7 @@ def tls = env.TLS ?: "" // Set to "--tls" for IBM Cloud Private
 // Pod Environment Variables
 def namespace = env.NAMESPACE ?: "default"
 def registry = env.REGISTRY ?: "docker.io"
-def imageName = env.IMAGE_NAME ?: "ibmcase/bluecompute-web"
+def imageName = env.IMAGE_NAME ?: "fabiogomezdiaz/bluecompute-web"
 def serviceLabels = env.SERVICE_LABELS ?: "app=web,tier=frontend" //,version=v1"
 def microServiceName = env.MICROSERVICE_NAME ?: "web"
 def servicePort = env.MICROSERVICE_PORT ?: "8000"
@@ -72,9 +72,9 @@ podTemplate(label: podLabel, cloud: cloud, serviceAccount: serviceAccount, envVa
         envVar(key: 'HELM_HOME', value: helmHome)
     ],
     containers: [
-        containerTemplate(name: 'nodejs', image: 'ibmcase/nodejs:6', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'podman', image: 'ibmcase/podman:ubuntu-16.04', ttyEnabled: true, command: 'cat', privileged: true),
-        containerTemplate(name: 'kubernetes', image: 'ibmcase/jenkins-slave-utils:3.1.2', ttyEnabled: true, command: 'cat')
+        containerTemplate(name: 'nodejs', image: 'fabiogomezdiaz/nodejs:6', ttyEnabled: true, command: 'cat'),
+        containerTemplate(name: 'podman', image: 'fabiogomezdiaz/podman:ubuntu-16.04', ttyEnabled: true, command: 'cat', privileged: true),
+        containerTemplate(name: 'kubernetes', image: 'fabiogomezdiaz/jenkins-slave-utils:3.1.2', ttyEnabled: true, command: 'cat')
   ]) {
 
     node(podLabel) {

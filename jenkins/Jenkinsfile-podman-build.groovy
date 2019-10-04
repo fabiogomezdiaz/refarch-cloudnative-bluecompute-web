@@ -1,7 +1,7 @@
 /*
     To learn how to use this sample pipeline, follow the guide below and enter the
     corresponding values for your environment and for this repository:
-    - https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes
+    - https://github.com/fabiogomezdiaz/refarch-cloudnative-devops-kubernetes
 */
 
 // Pod Template
@@ -13,7 +13,7 @@ def serviceAccount = env.SERVICE_ACCOUNT ?: "jenkins"
 // Pod Environment Variables
 def namespace = env.NAMESPACE ?: "default"
 def registry = env.REGISTRY ?: "docker.io"
-def imageName = env.IMAGE_NAME ?: "ibmcase/bluecompute-web"
+def imageName = env.IMAGE_NAME ?: "fabiogomezdiaz/bluecompute-web"
 
 /*
   Optional Pod Environment Variables
@@ -26,7 +26,7 @@ podTemplate(label: podLabel, cloud: cloud, serviceAccount: serviceAccount, envVa
         envVar(key: 'IMAGE_NAME', value: imageName)
     ],
     containers: [
-        containerTemplate(name: 'podman', image: 'ibmcase/podman:ubuntu-16.04', ttyEnabled: true, command: 'cat', privileged: true)
+        containerTemplate(name: 'podman', image: 'fabiogomezdiaz/podman:ubuntu-16.04', ttyEnabled: true, command: 'cat', privileged: true)
   ]) {
 
     node(podLabel) {

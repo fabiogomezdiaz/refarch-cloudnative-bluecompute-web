@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ibmcase/bluecompute-web
+  repository: fabiogomezdiaz/bluecompute-web
   tag: 0.6.0
   pullPolicy: Always
 

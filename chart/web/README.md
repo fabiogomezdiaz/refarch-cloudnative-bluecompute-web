@@ -3,7 +3,7 @@
 ## Introduction
 The sample Web application is built to demonstrate how to access the Omnichannel APIs hosted on Kubernetes Environment. The application provides the basic function to allow user to browse the Catalog items, make an Order and review profile. The Web application is built with AngularJS in Web 2.0 Single Page App style. It uses a Node.js backend to host the static content and implement the BFF (Backend for Frontend) pattern.
 
-![Application Architecture](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web/spring/static/imgs/2_catalog.png?raw=true)
+![Application Architecture](https://raw.githubusercontent.com/fabiogomezdiaz/refarch-cloudnative-bluecompute-web/master/static/imgs/2_catalog.png?raw=true)
 
 Here is an overview of the project's features:
 - AngularJS SPA.
@@ -14,13 +14,13 @@ Here is an overview of the project's features:
 
 ## Chart Source
 The source for the `Web` chart can be found at:
-* https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web/tree/master/spring/web
+* https://github.com/fabiogomezdiaz/refarch-cloudnative-bluecompute-web/tree/master/master/web
 
 ## Deploy Web Application to Kubernetes Cluster from CLI
 To deploy the Web Chart and its MySQL dependency Chart to a Kubernetes cluster using Helm CLI, follow the instructions below:
 ```bash
 # Clone web repository:
-$ git clone -b spring --single-branch https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-web.git
+$ git clone https://github.com/fabiogomezdiaz/refarch-cloudnative-bluecompute-web.git
 
 # Go to Chart Directory
 $ cd refarch-cloudnative-bluecompute-web/chart/web

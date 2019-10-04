@@ -1,7 +1,7 @@
 /*
     To learn how to use this sample pipeline, follow the guide below and enter the
     corresponding values for your environment and for this repository:
-    - https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes
+    - https://github.com/fabiogomezdiaz/refarch-cloudnative-devops-kubernetes
 */
 
 // Environment
@@ -18,7 +18,7 @@ def serviceAccount = env.SERVICE_ACCOUNT ?: "jenkins"
 // Pod Environment Variables
 def namespace = env.NAMESPACE ?: "default"
 def registry = env.REGISTRY ?: "docker.io"
-def imageName = env.IMAGE_NAME ?: "ibmcase/bluecompute-web"
+def imageName = env.IMAGE_NAME ?: "fabiogomezdiaz/bluecompute-web"
 def serviceLabels = env.SERVICE_LABELS ?: "app=web,tier=frontend" //,version=v1"
 def microServiceName = env.MICROSERVICE_NAME ?: "web"
 def servicePort = env.MICROSERVICE_PORT ?: "8000"
@@ -74,8 +74,8 @@ podTemplate(label: podLabel, cloud: cloud, serviceAccount: serviceAccount, envVa
         emptyDirVolume(mountPath: '/var/lib/docker', memory: false)
     ],
     containers: [
-        containerTemplate(name: 'nodejs', image: 'ibmcase/nodejs:6', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'docker', image: 'ibmcase/docker:18.09-dind', privileged: true)
+        containerTemplate(name: 'nodejs', image: 'fabiogomezdiaz/nodejs:6', ttyEnabled: true, command: 'cat'),
+        containerTemplate(name: 'docker', image: 'fabiogomezdiaz/docker:18.09-dind', privileged: true)
   ]) {
 
     node(podLabel) {
