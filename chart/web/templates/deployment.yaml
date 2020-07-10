@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "web.fullname" . }}
@@ -6,6 +6,9 @@ metadata:
     {{- include "web.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "web.labels" . | indent 6 }}
   template:
     metadata:
       labels:
